@@ -1,0 +1,15 @@
+#!/bin/bash
+
+archi="naca23012.dat"
+alfa=15
+yplus=100
+eter="a"
+Re=3000000
+M=0.128
+T0=300
+N="[100, 40, 30, 30] "
+bump=1
+cd /home/openfoam/run/airfoil
+foilgmsh.m
+octave --silent eval "foilgmsh('$archi', $alfa, $yplus, '$eter', $Re, $M, $T0, '$N', $bump)"
+gmsh --3 naca23012.dat.geo
